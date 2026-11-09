@@ -21,6 +21,8 @@
 
 html {
   color-scheme: dark;
+  /* The site header sticks to the top, so anchors land below it. */
+  scroll-padding-top: 4.5rem;
 }
 
 body {
@@ -94,6 +96,7 @@ body {
     letter-spacing: 0.14em;
     text-transform: uppercase;
     text-align: center;
+    white-space: nowrap;
     cursor: pointer;
     transition: background-color 150ms, border-color 150ms, color 150ms, transform 150ms;
   }
@@ -418,7 +421,17 @@ body {
   to { opacity: 1; transform: none; }
 }
 
+/* Phone menu: the sheet fades in, its rows rise one after another. */
+.menu-sheet { animation: menu-fade 220ms ease-out both; }
+.menu-row { animation: menu-row 520ms var(--ease-out) both; animation-delay: calc(60ms + var(--i, 0) * 45ms); }
+@keyframes menu-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes menu-row {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .menu-sheet, .menu-row,
   .bar-fill, .piece-glide, .thinking-dot, .rise, .live-dot, .hero-media,
   .hero-intro, .head-photo, .grid-draw, .line-in, .edge-line, .hdr-in > * { animation: none; }
   .gold-sheen.line-in { animation: none; }

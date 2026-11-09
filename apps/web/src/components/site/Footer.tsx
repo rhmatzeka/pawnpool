@@ -1,18 +1,15 @@
 import Link from "next/link";
-import { Sprite } from "./Sprite";
+import { Brand } from "./Brand";
 
 const link = "nav-link";
 
 export function Footer() {
   return (
-    <footer className="mt-24 border-t border-line bg-[#050403]">
-      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 md:grid-cols-[1.2fr_1fr_1fr]" data-reveal-stagger>
-        <div className="max-w-xs">
+    <footer className="mt-16 border-t md:mt-24 border-line bg-[#050403]">
+      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-10 px-5 py-12 md:grid-cols-[1.2fr_1fr_1fr]" data-reveal-stagger>
+        <div className="col-span-2 max-w-xs md:col-span-1">
           <p className="flex items-center gap-3">
-            <span className="grid h-9 w-9 place-items-center rounded-md border border-gold/50 bg-panel">
-              <Sprite piece="pawn" size={24} />
-            </span>
-            <span className="font-mono text-[0.95rem] font-bold uppercase tracking-[0.3em]">PawnPool</span>
+            <Brand keepWordmark />
           </p>
           <p className="mt-4 text-sm text-muted">Your crowd plays chess against an AI Boss. Free to play. Prizes are given by sponsors.</p>
         </div>

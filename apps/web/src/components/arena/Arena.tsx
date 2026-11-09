@@ -102,22 +102,25 @@ export function Arena({ slug, initial }: { slug: string; initial: PublicState })
   const finished = state.status === "FINISHED" || state.status === "ABANDONED";
 
   return (
-    <div className="mx-auto flex max-w-6xl flex-col px-3 pb-6 pt-2 sm:px-5 sm:pt-3 lg:h-full lg:max-w-[max(72rem,calc(100dvh+19.5rem))] lg:pb-4">
-      <div className="mb-2 flex shrink-0 items-center justify-between gap-x-6 gap-y-1 sm:mb-3">
+    <div className="mx-auto flex max-w-6xl flex-col px-4 pb-6 pt-3 sm:px-5 lg:h-full lg:max-w-[max(72rem,calc(100dvh+19.5rem))] lg:pb-4">
+      <div className="mb-2.5 flex shrink-0 items-center justify-between gap-x-4 sm:mb-3 sm:gap-x-6">
         <div className="min-w-0">
-          <h1 className="display text-xl !leading-none sm:text-3xl">{state.title}</h1>
+          <h1 className="display truncate text-[1.35rem] !leading-none sm:text-3xl">{state.title}</h1>
           <p className="mt-1 hidden truncate text-sm text-muted sm:block">
             The crowd (White) vs the AI Boss, level {state.bossLevel}. Hosted by {state.hostName}.
           </p>
         </div>
-        <div className="flex items-center gap-3 text-sm">
+        <div className="flex shrink-0 items-center gap-3 text-sm">
           {live && (
             <span className="kicker hidden items-center gap-2 sm:flex">
               <span className="live-dot" aria-hidden="true" />
               {state.isPractice ? "Practice, always open" : "Live now"}
             </span>
           )}
-          <span className="th">{state.playersOnline} playing</span>
+          <span className="th flex items-center gap-2 whitespace-nowrap">
+            {live && <span className="live-dot sm:hidden" aria-hidden="true" />}
+            {state.playersOnline} playing
+          </span>
         </div>
       </div>
 
