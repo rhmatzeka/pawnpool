@@ -67,22 +67,22 @@ export default async function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative isolate flex h-[calc(85svh-4.5rem)] min-h-[34rem] items-start justify-center pt-12 sm:items-center sm:pt-0 overflow-hidden bg-black md:h-[calc(100svh-4.5rem-3.25rem)] md:min-h-[36rem]">
+      <section className="relative isolate flex min-h-[calc(100svh-3.85rem-5.5rem)] flex-col justify-center overflow-hidden bg-black pb-[52vw] pt-10 sm:h-[calc(85svh-4.5rem)] sm:min-h-[34rem] sm:flex-row sm:items-center sm:pb-0 sm:pt-0 md:h-[calc(100svh-4.5rem-3.25rem)] md:min-h-[36rem]">
         <div className="hero-media absolute inset-0 -z-20" aria-hidden="true">
-          <div className="hero-intro absolute inset-x-0 bottom-[6%] top-[40%] sm:inset-0">
+          <div className="hero-intro absolute inset-x-0 bottom-0 h-[64vw] sm:inset-0 sm:h-auto">
           <Image
             src="/assets/hero/board.webp"
             alt=""
             fill
             priority
             sizes="100vw"
-            className="object-contain object-center sm:object-cover sm:object-[50%_45%]"
+            className="object-cover object-[50%_42%] sm:object-[50%_45%]"
           />
           <HeroVideo />
           </div>
         </div>
         <div
-          className="absolute inset-0 -z-10"
+          className="absolute inset-0 -z-10 hidden sm:block"
           aria-hidden="true"
           style={{
             background:
@@ -94,7 +94,7 @@ export default async function Home() {
           aria-hidden="true"
           style={{
             background:
-              "radial-gradient(ellipse 110% 42% at 50% 34%, rgb(7 6 5 / 0.9) 0%, rgb(7 6 5 / 0.62) 65%, transparent 100%), linear-gradient(to bottom, #070605 0%, rgb(7 6 5 / 0.55) 40%, transparent 62%)",
+              "linear-gradient(to bottom, #070605 calc(100% - 64vw), rgb(7 6 5 / 0.35) calc(100% - 48vw), rgb(7 6 5 / 0.08) calc(100% - 30vw), rgb(7 6 5 / 0.5) calc(100% - 8vw), #070605 100%)",
           }}
         />
         <div
@@ -108,12 +108,12 @@ export default async function Home() {
         <div className="grid-fine grid-draw absolute inset-0 -z-10 opacity-60" aria-hidden="true" />
         <CheckerReveal rows={8} step={45} className="-z-10" />
 
-        <div className="relative mx-auto flex max-w-6xl flex-col items-center px-5 text-center">
+        <div className="relative mx-auto flex w-full max-w-6xl flex-col items-center px-5 text-center">
           <p className="rise pill" style={{ animationDelay: "150ms" }}>
             <span className="live-dot" aria-hidden="true" />
             Live crowd chess
           </p>
-          <h1 className="display hero-shadow mt-6 text-[clamp(3rem,10.5vw,7.75rem)] leading-[0.86]">
+          <h1 className="display hero-shadow mt-6 text-[clamp(2.5rem,11.4vw,7.75rem)] leading-[0.86] sm:text-[clamp(3rem,10.5vw,7.75rem)]">
             <span className="line-mask">
               <span className="line-in" style={{ animationDelay: "300ms" }}>Your crowd</span>
             </span>
@@ -124,12 +124,12 @@ export default async function Home() {
               <span className="line-in gold-text gold-sheen" style={{ animationDelay: "560ms" }}>AI Boss</span>
             </span>
           </h1>
-          <p className="rise hero-shadow mt-7 max-w-md text-lg text-[#e6dfd3]" style={{ animationDelay: "900ms" }}>
+          <p className="rise hero-shadow mt-5 max-w-md text-[1.05rem] text-[#e6dfd3] sm:mt-7 sm:text-lg" style={{ animationDelay: "900ms" }}>
             Free to play. Sponsors put up the prizes.
           </p>
-          <div className="rise mt-9 flex flex-wrap items-center justify-center gap-3" style={{ animationDelay: "1050ms" }}>
-            <Link href={PLAY_HREF} className="btn btn-gold">Play now</Link>
-            <Link href="#how" className="btn btn-glass">How it works</Link>
+          <div className="rise mt-8 grid w-full max-w-xs grid-cols-2 gap-3 sm:mt-9 sm:flex sm:w-auto sm:max-w-none sm:flex-wrap sm:items-center sm:justify-center" style={{ animationDelay: "1050ms" }}>
+            <Link href={PLAY_HREF} className="btn btn-gold px-3 sm:px-[1.6rem]">Play now</Link>
+            <Link href="#how" className="btn btn-glass px-3 sm:px-[1.6rem]">How it works</Link>
           </div>
         </div>
       </section>
@@ -137,47 +137,54 @@ export default async function Home() {
       {/* Live strip */}
       <section aria-label="Live status" className="relative border-y border-line bg-[#0a0807]">
         <span className="edge-line -top-px" style={{ animationDelay: "700ms" }} aria-hidden="true" />
-        <div className="rise mx-auto flex max-w-6xl flex-col gap-x-8 gap-y-1 px-5 py-3 font-mono text-[0.72rem] font-bold uppercase tracking-[0.18em] md:h-[3.25rem] md:flex-row md:items-center md:justify-between md:py-0" style={{ animationDelay: "1150ms" }}>
-          <Link href="/events/practice" className="flex items-center gap-3 hover:text-gold">
-            <span className="live-dot" aria-hidden="true" />
-            Practice Arena
+        <div className="rise mx-auto grid max-w-6xl px-5 font-mono text-[0.7rem] font-bold uppercase tracking-[0.16em] lg:flex lg:h-[3.25rem] lg:items-center lg:justify-between lg:gap-8 lg:text-[0.72rem] lg:tracking-[0.18em]" style={{ animationDelay: "1150ms" }}>
+          <Link href="/events/practice" className="flex items-center justify-between gap-3 whitespace-nowrap py-3 hover:text-gold lg:justify-start lg:py-0">
+            <span className="flex items-center gap-3">
+              <span className="live-dot" aria-hidden="true" />
+              Practice Arena
+            </span>
             <span className="text-muted">Open all day</span>
           </Link>
           {next ? (
-            <Link href={`/events/${next.slug}`} className="flex flex-wrap items-center gap-x-4 gap-y-1 hover:text-gold">
-              <span className="text-muted">{live ? "Live now" : "Next Boss Battle"}</span>
-              <span className="truncate">{next.title}</span>
-              {live ? (
-                <span className="text-gold">Join</span>
-              ) : (
-                <span className="text-gold">
-                  Starts in <Countdown target={Date.parse(next.startsAt)} />
-                </span>
-              )}
-              {!live && <span className="hidden text-muted lg:inline">{formatWib(next.startsAt)}</span>}
+            <Link href={`/events/${next.slug}`} className="flex items-center justify-between gap-4 whitespace-nowrap border-t border-line py-3 hover:text-gold lg:border-0 lg:py-0">
+              <span className="min-w-0 sm:flex sm:items-center sm:gap-4">
+                <span className="block text-[0.62rem] text-muted sm:text-[0.7rem] lg:text-[0.72rem]">{live ? "Live now" : "Next Boss Battle"}</span>
+                <span className="mt-0.5 block truncate sm:mt-0">{next.title}</span>
+              </span>
+              <span className="flex shrink-0 items-center gap-4">
+                {live ? (
+                  <span className="text-gold">Join</span>
+                ) : (
+                  <span className="text-gold">
+                    <span className="max-sm:sr-only">Starts in </span>
+                    <Countdown target={Date.parse(next.startsAt)} />
+                  </span>
+                )}
+                {!live && <span className="hidden text-muted lg:inline">{formatWib(next.startsAt)}</span>}
+              </span>
             </Link>
           ) : (
-            <p className="text-muted">Next Boss Battle coming soon</p>
+            <p className="border-t border-line py-3 text-muted lg:border-0 lg:py-0">Next Boss Battle coming soon</p>
           )}
         </div>
       </section>
 
       {/* How it works */}
-      <section id="how" className="mx-auto max-w-6xl scroll-mt-4 px-5 pt-24 md:pt-32">
+      <section id="how" className="mx-auto max-w-6xl px-5 pt-16 sm:pt-24 md:pt-32">
         <p className="kicker" data-reveal>How a Boss Battle works</p>
         <h2 className="display display-md mt-4 max-w-3xl" data-reveal="mask">Three moves. One crowd. One Boss.</h2>
-        <ol data-reveal-stagger className="mt-14 grid gap-px overflow-hidden rounded-lg border border-line bg-line md:grid-cols-3">
+        <ol data-reveal-stagger className="mt-10 grid gap-px overflow-hidden rounded-lg border border-line bg-line md:mt-14 md:grid-cols-3">
           {STEPS.map((s, i) => (
-            <li key={s.n} className="relative flex flex-col bg-panel p-7 md:p-8">
+            <li key={s.n} className="relative flex flex-col bg-panel p-6 sm:p-7 md:p-8">
               <div className="flex items-start justify-between">
-                <span className="numeral text-[6.5rem] md:text-[8rem]" aria-hidden="true" data-reveal="mask" style={{ "--d": `${200 + i * 120}ms` } as CSSProperties}>
+                <span className="numeral text-[4.75rem] sm:text-[6.5rem] md:text-[8rem]" aria-hidden="true" data-reveal="mask" style={{ "--d": `${200 + i * 120}ms` } as CSSProperties}>
                   {s.n}
                 </span>
                 <span data-reveal="drop" style={{ "--d": `${450 + i * 120}ms` } as CSSProperties}>
-                  <Sprite piece={s.piece} size={56} />
+                  <Sprite piece={s.piece} size={48} className="sm:!h-14 sm:!w-14" />
                 </span>
               </div>
-              <p className="kicker mt-8">
+              <p className="kicker mt-5 md:mt-8">
                 <span className="sr-only">Step {s.n}: </span>
                 {s.word}
               </p>
@@ -189,7 +196,7 @@ export default async function Home() {
       </section>
 
       {/* Example turn */}
-      <section className="mx-auto mt-24 max-w-6xl px-5 md:mt-32">
+      <section className="mx-auto mt-16 max-w-6xl px-5 sm:mt-24 md:mt-32">
         <div className="grid items-center gap-10 md:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] md:gap-14">
           <figure aria-label="Example of one turn" className="relative mx-auto w-full max-w-[34rem]" data-reveal="scale">
             <div
@@ -239,17 +246,17 @@ export default async function Home() {
       </section>
 
       {/* Sponsors */}
-      <section className="photo-band mt-24 border-y border-line md:mt-32">
+      <section className="photo-band mt-16 border-y border-line sm:mt-24 md:mt-32">
         <div className="photo-band-img" aria-hidden="true">
           <Image src="/assets/hero/flight.webp" alt="" fill sizes="100vw" className="object-cover" />
         </div>
-        <div className="mx-auto max-w-6xl px-5 py-24 md:py-32">
+        <div className="mx-auto max-w-6xl px-5 py-16 sm:py-24 md:py-32">
           <p className="kicker" data-reveal>For sponsors</p>
           <h2 className="display display-md mt-4 max-w-3xl" data-reveal="mask">Put your name on the board</h2>
           <p className="mt-5 max-w-lg text-lg text-[#d8d0c4]" data-reveal style={{ "--d": "120ms" } as CSSProperties}>
             Sponsors fund the prizes and get a crowd that shows up, plays together and sees your brand every turn.
           </p>
-          <div className="mt-12 grid gap-4 md:grid-cols-2" data-reveal-stagger>
+          <div className="mt-10 grid gap-4 md:mt-12 md:grid-cols-2" data-reveal-stagger>
             <div className="rounded-lg border border-line bg-black/70 p-6 backdrop-blur-sm">
               <p className="kicker">Sponsored Event</p>
               <p className="display display-sm mt-4 text-gold">From Rp<span data-count="3000000" data-count-locale="id-ID">3.000.000</span></p>
@@ -270,25 +277,25 @@ export default async function Home() {
       </section>
 
       {/* Creators */}
-      <section className="mx-auto mt-24 max-w-6xl px-5 md:mt-32">
+      <section className="mx-auto mt-16 max-w-6xl px-5 sm:mt-24 md:mt-32">
         <div className="photo-band panel-gold rounded-lg border" data-reveal="scale">
           <div className="photo-band-img opacity-60" aria-hidden="true">
             <Image src="/assets/hero/settled.webp" alt="" fill sizes="(min-width: 1152px) 1152px, 100vw" className="object-cover" />
           </div>
-          <div className="flex flex-col gap-8 p-8 md:flex-row md:items-center md:justify-between md:p-14">
+          <div className="flex flex-col gap-8 p-6 sm:p-8 md:flex-row md:items-center md:justify-between md:p-14">
             <div className="max-w-xl">
               <Sprite piece="rook" size={56} />
               <p className="kicker mt-6">For creators</p>
               <h2 className="display display-md mt-3">Run a Boss Battle for your community</h2>
               <p className="mt-4 text-[#d8d0c4]">Creator Pro is coming. Join the waitlist.</p>
             </div>
-            <Link href="/host" className="btn btn-glass shrink-0">Join the waitlist</Link>
+            <Link href="/host" className="btn btn-glass shrink-0 self-start md:self-auto">Join the waitlist</Link>
           </div>
         </div>
       </section>
 
       {/* Closing */}
-      <section className="mx-auto max-w-6xl px-5 pt-24 text-center md:pt-32">
+      <section className="mx-auto max-w-6xl px-5 pt-16 text-center sm:pt-24 md:pt-32">
         <h2 className="display text-[clamp(2.4rem,8vw,6rem)]" data-reveal="mask">
           The Boss is <span className="gold-text">waiting</span>
         </h2>

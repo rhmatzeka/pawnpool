@@ -10,7 +10,7 @@ export default function SiteLayout({ children }: Readonly<{ children: React.Reac
       >
         Skip to content
       </a>
-      <Header />
+      <Header sticky />
       <main id="main" className="flex-1">
         {children}
       </main>

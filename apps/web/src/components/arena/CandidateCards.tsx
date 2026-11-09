@@ -38,29 +38,29 @@ export function CandidateCards({
       {turn.candidates.map((c, i) => {
         const row = rows[i]!;
         const picked = pick === c.uci;
+        const count = `${row.count} ${row.count === 1 ? "pick" : "picks"}${total > 0 ? ` (${row.pct}%)` : ""}`;
         const body = (
           <>
-            <span className="flex items-start gap-2">
+            <span className="flex items-center gap-2">
               <CandidateMark letter={candidateLetter(i)} active={picked} />
-              <span className="flex min-w-0 flex-wrap items-baseline gap-x-2">
+              <span className="flex min-w-0 flex-1 flex-wrap items-baseline gap-x-2">
                 <span className={`font-display font-bold leading-snug ${compact ? "text-base" : "text-[16px]"}`}>{c.label}</span>
                 <span className="text-sm text-muted">{c.san}</span>
               </span>
               {picked && (
-                <span className="ml-auto shrink-0 rounded-full bg-gold px-2 py-0.5 font-mono text-[0.65rem] font-bold uppercase tracking-wider text-black">Your pick</span>
+                <span className="shrink-0 rounded-full bg-gold px-2 py-0.5 font-mono text-[0.65rem] font-bold uppercase tracking-wider text-black">Your pick</span>
               )}
+              {!compact && <span className="shrink-0 text-right text-xs tabular-nums text-muted sm:max-lg:hidden">{count}</span>}
             </span>
-            <span className="mt-1.5 flex items-center gap-2">
-              <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-line">
+            <span className="mt-2 flex items-center gap-2">
+              <span className="h-1 flex-1 overflow-hidden rounded-full bg-line sm:h-1.5">
                 <span
                   className={`block h-full rounded-full transition-[width] duration-500 ${picked ? "bg-gold" : "bg-gold/55"}`}
                   style={{ width: `${row.pct}%` }}
                 />
               </span>
-              <span className="w-24 text-right text-xs tabular-nums text-muted">
-                {row.count} {row.count === 1 ? "pick" : "picks"}
-                {total > 0 ? ` (${row.pct}%)` : ""}
-              </span>
+              {/* Three narrow columns on tablets (and in the stream overlay): the count sits under the move instead. */}
+              <span className={`shrink-0 text-right text-xs tabular-nums text-muted ${compact ? "" : "hidden sm:max-lg:inline"}`}>{count}</span>
             </span>
           </>
         );
